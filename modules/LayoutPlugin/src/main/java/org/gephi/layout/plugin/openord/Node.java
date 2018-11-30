@@ -54,6 +54,7 @@ public class Node implements Cloneable {
     float subX;
     float subY;
     float energy;
+    float degree;
 
     public Node(int id) {
         this.id = id;
@@ -71,6 +72,7 @@ public class Node implements Cloneable {
         clone.subX = subX;
         clone.subY = subY;
         clone.energy = energy;
+        clone.degree = degree;
         return clone;
     }
 }
