@@ -184,7 +184,14 @@ public class Worker implements Runnable {
             }
         }
 
-        nodeEnergy += densityGrid.getDensity(n.x, n.y, fineDensity);
+        //apply degree to source node aswel, only when in fineDensity mode
+        if(fineDensity){
+            nodeEnergy += n.degree*n.degree*densityGrid.getDensity(n.x, n.y, fineDensity);
+        }
+        else {
+            nodeEnergy += densityGrid.getDensity(n.x, n.y, fineDensity);
+        }
+
 
         return nodeEnergy;
     }
