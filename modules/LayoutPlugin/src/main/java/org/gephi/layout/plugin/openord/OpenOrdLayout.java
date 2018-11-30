@@ -155,6 +155,11 @@ public class OpenOrdLayout implements Layout, LongTask {
                 }
             }
 
+            //degree loading
+            for (int i = 0; i < numNodes; i++) {
+                nodes[i].degree = 1 + neighbors[i].size();
+            }
+
             //Reset position
             boolean someFixed = false;
             for (Node n : nodes) {
