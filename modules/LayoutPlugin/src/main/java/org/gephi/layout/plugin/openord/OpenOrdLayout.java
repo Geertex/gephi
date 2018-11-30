@@ -155,6 +155,20 @@ public class OpenOrdLayout implements Layout, LongTask {
                 }
             }
 
+            //Normalization degree loading
+            //Normalizes degree to be between 1-2
+            int maxDegree = 0;
+            int minDegree = Integer.MAX_VALUE;
+            for (int i = 0; i < numNodes; i++) {
+                int degree = neighbors[i].size();
+                nodes[i].degree = degree;
+                maxDegree = Math.max(maxDegree, degree);
+                minDegree = Math.min(minDegree, degree);
+            }
+            for (int i = 0; i < numNodes; i++) {
+                nodes[i].degree = 1f+((nodes[i].degree-minDegree)/(maxDegree-minDegree));
+            }
+
             //Reset position
             boolean someFixed = false;
             for (Node n : nodes) {
