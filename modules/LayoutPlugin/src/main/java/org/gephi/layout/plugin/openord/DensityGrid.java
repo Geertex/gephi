@@ -102,7 +102,8 @@ public class DensityGrid implements Cloneable {
                             xDist = nX - bi.x;
                             yDist = nY - bi.y;
                             distance = xDist * xDist + yDist * yDist;
-                            density += 1e-4 / (distance + 1e-50);
+                            //lineair scaling method
+                            density += bi.degree / (Math.sqrt(distance) + 1e-50);
                         }
                     }
                 }
